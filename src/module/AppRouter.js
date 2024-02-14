@@ -3,8 +3,9 @@ import AuthRouter from './Auth/Auth.Router.js';
 import BlogRouter from './Blog/Blog.Router.js';
 import UserRouter from './User/User.Router.js';
 
-export const initApp = (app)=>{
+export const initApp = (app,express)=>{
     ConnectDB();
+    app.use(express.json());
     app.get('/',(req,res)=>{
         return res.json({message:"Welcome"}); // Main Page 
       });
