@@ -5,8 +5,15 @@ import UserRouter from './User/User.Router.js';
 
 export const initApp = (app)=>{
     ConnectDB();
+    app.get('/',(req,res)=>{
+        return res.json({message:"Welcome"}); // Main Page 
+      });
     app.use('/auth',AuthRouter);
     app.use('/blog',BlogRouter);
     app.use('/user',UserRouter);
     
+
+    app.use('*',(req,res)=>{
+        return res.json({message:"Page Not Found"}); // end point not found
+    });
 }
