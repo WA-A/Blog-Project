@@ -16,3 +16,18 @@ export const Update = async (req,res)=>{
         return res.json({message:"error",error:error.stack});
     } 
  }
+
+ export const Destroy = async (req,res)=>{
+    const {id} = req.params;
+    const user = await UserModel.destroy({
+        where:{
+            id
+        }
+    });
+
+    if(!user){
+        return res.json({message:"user not found"});
+    }
+
+    return res.json({message:"success",user});
+ }
