@@ -1,5 +1,6 @@
 import { sequelize } from'../moudle/Connection.js';
 import {  DataTypes } from'sequelize';
+import BlogModel from './BlogModule.js';
 
 
 const UserModel = sequelize.define('User',{
@@ -28,6 +29,19 @@ const UserModel = sequelize.define('User',{
      timestamps:true,
     }  
 );
+
+
+UserModel.hasMany(BlogModel,{ // 1-m
+   //onDelete: 'CASCADE'
+   foreignKey:{
+      name:'UserId',
+      type:DataTypes.INTEGER,
+   },
+});
+
+BlogModel.belongsTo(UserModel); //  تنتمي الى
+
+
 
 
 
