@@ -1,3 +1,1 @@
-export const GetUser = (req,res)=>{
-    return res.json({message:"User"});
-}
+import UserModel from "../../../DB/moudle/UserModule.js";
