@@ -4,5 +4,5 @@ const router = Router();
 
 router.get('/',AuthController.GetAuth);
 router.post('/register',AuthController.Register);
-
+router.post('/login',AuthController.Login);
 export default router;

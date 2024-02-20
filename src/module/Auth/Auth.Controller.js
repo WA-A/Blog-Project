@@ -20,7 +20,24 @@ export const Register = async (req,res)=>{
   
 }
 
+export const Login = async (req,res)=>{
 
+    const {Email,Password} = req.body;
+
+    const CheckUser = await UserModel.findAll({
+        attributes:["id","name"],
+        where:{
+            Email,
+            Password
+        }
+    });
+
+    if(!CheckUser.length){
+        return res.json({message:"email or password is worng"});
+    }
+
+    return res.json({message:"success",user:CheckUser});
+ }
 
 
  
