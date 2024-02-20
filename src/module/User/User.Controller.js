@@ -1,4 +1,26 @@
+import BlogModel from "../../../DB/moudle/BlogModule.js";
 import UserModel from "../../../DB/moudle/UserModule.js";
+import {Op} from "sequelize"
+
+export const GetUsers = async (req,res)=>{
+    try{
+        const users = await UserModel.findAll({
+            include:BlogModel,
+            where:{
+                age:{
+                    [Op.gte]:25, // gretar than >=
+                }
+            }
+        }); // == SELECT * FROM testing
+
+        return res.json({message:"success",users});
+    }
+    catch(error){
+        return res.json({message:"error",error:error.stack});
+    }
+     
+    }
+
 export const Update = async (req,res)=>{
     try{
     const {id} = req.params;
