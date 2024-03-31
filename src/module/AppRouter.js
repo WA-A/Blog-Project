@@ -2,9 +2,11 @@ import { ConnectDB } from '../../DB/moudle/Connection.js';
 import AuthRouter from './Auth/Auth.Router.js';
 import BlogRouter from './Blog/Blog.Router.js';
 import UserRouter from './User/User.Router.js';
+import express from 'express';
 
 export const initApp = (app,express)=>{
     ConnectDB();
+    app.use(cors());
     app.use(express.json());
     app.get('/',(req,res)=>{
         return res.json({message:"Welcome"}); // Main Page 
