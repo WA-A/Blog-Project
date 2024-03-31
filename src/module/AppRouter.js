@@ -5,8 +5,9 @@ import UserRouter from './User/User.Router.js';
 import cors from 'cors';
 
 export const initApp = (app,express)=>{
-    ConnectDB();
     app.use(cors());
+    ConnectDB();
+    
     app.use(express.json());
     app.get('/',(req,res)=>{
         return res.json({message:"Welcome"}); // Main Page 
