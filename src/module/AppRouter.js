@@ -2,7 +2,7 @@ import { ConnectDB } from '../../DB/moudle/Connection.js';
 import AuthRouter from './Auth/Auth.Router.js';
 import BlogRouter from './Blog/Blog.Router.js';
 import UserRouter from './User/User.Router.js';
-import express from 'express';
+import cors from 'cors';
 
 export const initApp = (app,express)=>{
     ConnectDB();
